@@ -14,13 +14,16 @@ export default function AuthLayout() {
 
   return (
     <div className="grid min-h-screen lg:grid-cols-[1.05fr_1fr]">
-      <aside className="relative hidden overflow-hidden bg-indigo-950 p-12 text-white lg:flex lg:flex-col lg:justify-between">
-        <div className="absolute -right-24 -top-24 size-80 rounded-full bg-amber-300/20 blur-2xl" />
-        <div className="absolute -bottom-32 -left-16 size-96 rounded-full bg-indigo-500/30 blur-3xl" />
+      <aside
+        aria-label="Tentang TemuBalik"
+        className="relative hidden overflow-hidden bg-indigo-950 p-12 text-white lg:flex lg:flex-col lg:justify-between"
+      >
+        <div aria-hidden="true" className="absolute -right-24 -top-24 size-80 rounded-full bg-amber-300/20 blur-2xl" />
+        <div aria-hidden="true" className="absolute -bottom-32 -left-16 size-96 rounded-full bg-indigo-500/30 blur-3xl" />
 
         <div className="relative flex items-center gap-3">
           <span className="grid size-11 place-items-center rounded-2xl bg-amber-300 text-indigo-950">
-            <IconMapPinSearch size={24} />
+            <IconMapPinSearch size={24} aria-hidden="true" />
           </span>
           <span className="font-display text-2xl font-extrabold">
             Temu<span className="text-amber-300">Balik</span>
@@ -28,11 +31,11 @@ export default function AuthLayout() {
         </div>
 
         <div className="relative">
-          <IconBackpack size={44} className="mb-5 text-amber-300" />
-          <h2 className="font-display text-4xl font-extrabold leading-tight">
+          <IconBackpack size={44} aria-hidden="true" className="mb-5 text-amber-300" />
+          <p className="font-display text-4xl font-extrabold leading-tight">
             Barang hilang? <br />
             <span className="text-amber-300">Biar kampus yang bantu cari.</span>
-          </h2>
+          </p>
           <ul className="mt-8 space-y-3">
             {SAMPLE_TICKETS.map((ticket) => (
               <li
@@ -49,7 +52,7 @@ export default function AuthLayout() {
         </div>
 
         <p className="relative flex items-center gap-2 text-sm text-indigo-200">
-          <IconCircleCheck size={18} className="text-amber-300" /> Dibuat untuk praktikum PABWE 2026
+          <IconCircleCheck size={18} aria-hidden="true" className="text-amber-300" /> Dibuat untuk praktikum PABWE 2026
         </p>
       </aside>
 

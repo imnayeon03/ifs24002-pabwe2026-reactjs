@@ -58,7 +58,7 @@ export default function DetailPage() {
             </span>
           </div>
 
-          <h2 className="mt-4 text-3xl font-extrabold leading-tight text-indigo-950">{item.title}</h2>
+          <h1 className="mt-4 text-3xl font-extrabold leading-tight text-indigo-950">{item.title}</h1>
 
           <dl className="mt-4 space-y-2 text-sm text-stone-600">
             <div>

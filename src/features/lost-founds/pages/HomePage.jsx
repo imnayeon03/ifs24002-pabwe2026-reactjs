@@ -72,9 +72,9 @@ export default function HomePage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-extrabold text-indigo-950">
+          <h1 className="text-3xl font-extrabold text-indigo-950">
             {showingStats ? "Statistik laporan" : "Daftar laporan"}
-          </h2>
+          </h1>
           <p className="mt-1 text-stone-600">Pantau barang hilang dan temuan di sekitar kampus.</p>
         </div>
         <button
