@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { isChangeProfile, isChangeProfilePassword, isChangeProfilePhoto, isProfile } from '../states/userSlice';
 import useInput from '../../../hooks/useInput';
@@ -78,7 +78,7 @@ export default function ProfilePage() {
       </div>
 
       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-        <h3 className="text-lg font-semibold text-gray-700 mb-4">Ubah Password</h3>
+        <h3 className="text-lg font-semibold text-gray-700 mb-4">Ganti kata sandi</h3>
         <form onSubmit={handleUpdatePassword} className="space-y-4 max-w-md">
           <div>
             <label htmlFor="prof-oldpass" className="block text-sm font-medium text-gray-600">Password Lama</label>

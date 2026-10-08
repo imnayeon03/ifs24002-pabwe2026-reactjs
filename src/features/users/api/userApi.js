@@ -1,9 +1,11 @@
 // src/features/users/api/userApi.js
 import { callApi } from "../../../helpers/apiHelper";
 
-export const getUsers = () => callApi("/users", { method: "GET" });
+export const fetchUsers = () => callApi("/users", { method: "GET" });
+export const getUsers = fetchUsers;
 
-export const getProfile = () => callApi("/users/me", { method: "GET" });
+export const fetchMe = () => callApi("/users/me", { method: "GET" });
+export const getProfile = fetchMe;
 
 export const updateProfile = (data) =>
   callApi("/users/me", { method: "PUT", body: data });

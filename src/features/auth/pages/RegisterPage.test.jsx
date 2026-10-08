@@ -3,8 +3,8 @@ import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Route, Routes } from "react-router-dom";
 import RegisterPage from "./RegisterPage";
-import { postRegister } from "../../api/authApi";
-import { renderWithProviders } from "../../../../test-utils";
+import { postRegister } from "../api/authApi";
+import { renderWithProviders } from "../../../test-utils";
 
 vi.mock("../api/authApi");
 vi.mock("../../../helpers/toolsHelper", () => ({

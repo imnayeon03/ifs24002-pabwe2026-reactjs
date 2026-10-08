@@ -3,7 +3,7 @@ import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import LoginPage from "./LoginPage";
 import { postLogin } from "../api/authApi";
-import { renderWithProviders } from "../../../../test-utils";
+import { renderWithProviders } from "../../../test-utils";
 
 vi.mock("../api/authApi");
 vi.mock("../../../helpers/toolsHelper", () => ({ showErrorDialog: vi.fn(), showSuccessDialog: vi.fn() }));

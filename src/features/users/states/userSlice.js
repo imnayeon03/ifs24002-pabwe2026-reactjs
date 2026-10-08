@@ -1,10 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getUsers, getProfile, updateProfile, updateProfilePhoto, updatePassword } from '../api/userApi';
+import { isAuthLogout } from '../../auth/states/reducer';
+import {
+  fetchUsers as fetchUsersApi,
+  fetchMe as fetchMeApi,
+  updateProfile,
+  updateProfilePhoto,
+  updatePassword,
+} from '../api/userApi';
 import { showSuccessDialog, showErrorDialog } from '../../../helpers/toolsHelper';
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async (_, { rejectWithValue }) => {
   try {
-    const response = await getUsers();
+    const response = await fetchUsersApi();
     return response.data.users;
   } catch (error) {
     showErrorDialog(error.message);
@@ -14,7 +21,7 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async (_, { rejec
 
 export const isProfile = createAsyncThunk('users/isProfile', async (_, { rejectWithValue }) => {
   try {
-    const response = await getProfile();
+    const response = await fetchMeApi();
     return response.data.user;
   } catch (error) {
     return rejectWithValue(error.message);
@@ -65,27 +72,45 @@ const userSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setProfile: (state, action) => {
+      state.profile = action.payload;
+    },
+    clearProfile: (state) => {
+      state.profile = null;
+    },
+    setUsers: (state, action) => {
+      state.users = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
+      .addCase(isAuthLogout, () => ({
+        users: [],
+        profile: null,
+        loading: false,
+        error: null,
+      }))
       .addCase(fetchUsers.pending, (state) => { state.loading = true; })
       .addCase(fetchUsers.fulfilled, (state, action) => { state.loading = false; state.users = action.payload; })
       .addCase(fetchUsers.rejected, (state, action) => { state.loading = false; state.error = action.payload; })
-      
+
       .addCase(isProfile.fulfilled, (state, action) => { state.profile = action.payload; })
-      
+      .addCase(isProfile.rejected, (state, action) => { state.error = action.payload; })
+
       .addCase(isChangeProfile.pending, (state) => { state.loading = true; })
       .addCase(isChangeProfile.fulfilled, (state) => { state.loading = false; })
       .addCase(isChangeProfile.rejected, (state, action) => { state.loading = false; state.error = action.payload; })
-      
+
       .addCase(isChangeProfilePhoto.pending, (state) => { state.loading = true; })
       .addCase(isChangeProfilePhoto.fulfilled, (state) => { state.loading = false; })
       .addCase(isChangeProfilePhoto.rejected, (state, action) => { state.loading = false; state.error = action.payload; })
-      
+
       .addCase(isChangeProfilePassword.pending, (state) => { state.loading = true; })
       .addCase(isChangeProfilePassword.fulfilled, (state) => { state.loading = false; })
       .addCase(isChangeProfilePassword.rejected, (state, action) => { state.loading = false; state.error = action.payload; });
   },
 });
 
+export const { setProfile, clearProfile, setUsers } = userSlice.actions;
 export default userSlice.reducer;

@@ -12,7 +12,7 @@ export default function UsersPage() {
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold text-gray-800 mb-8 border-b pb-4">Direktori Pengguna</h2>
+      <h2 className="text-3xl font-bold text-gray-800 mb-8 border-b pb-4">Komunitas pengguna</h2>
       {loading ? (
         <div className="flex justify-center items-center h-32">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>

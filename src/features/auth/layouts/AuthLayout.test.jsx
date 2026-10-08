@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { screen } from "@testing-library/react";
 import { Route, Routes } from "react-router-dom";
 import AuthLayout from "./AuthLayout";
-import { renderWithProviders, stateWith } from "../../../../test-utils";
+import { renderWithProviders, stateWith } from "../../../test-utils";
 
 const tree = (
   <Routes>
